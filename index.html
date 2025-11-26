@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- REMIX ICONS FROM CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+
+  <!-- SWIPER CSS LOCAL -->
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+
+  <!-- YOUR CUSTOM CSS LOCAL -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <title>ISU Community – Login / Sign Up</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+</head>
+<body>
+  <div class="login container grid">
+    <div class="login__container grid">
+      <!-- Swiper -->
+      <div class="login__swiper swiper">
+        <div class="login__swiper-social">
+          <p class="login__swiper-subtitle">Our Social Media</p>
+          <div class="login__swiper-links">
+            <a href="#" target="_blank" class="login__swiper-link"><i class="ri-facebook-circle-line"></i></a>
+            <a href="#" target="_blank" class="login__swiper-link"><i class="ri-instagram-line"></i></a>
+            <a href="#" target="_blank" class="login__swiper-link"><i class="ri-twitter-x-line"></i></a>
+          </div>
+        </div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="assets/img/img-1.png" alt="Campus" class="login__swiper-img" />
+            <div class="login__swiper-data">
+              <p class="login__swiper-subtitle">Welcome Back</p>
+              <h1 class="login__swiper-title">Future leaders,<br /> Sign in to unlock your ISU journey.</h1>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/img/img-2.png" alt="Community" class="login__swiper-img" />
+            <div class="login__swiper-data">
+              <p class="login__swiper-subtitle">Your Community</p>
+              <h1 class="login__swiper-title">Hello Student,<br /> Sign in to connect, learn, and grow together.</h1>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/img/img-3.png" alt="Library" class="login__swiper-img" />
+            <div class="login__swiper-data">
+              <p class="login__swiper-subtitle">Campus Life</p>
+              <h1 class="login__swiper-title">Your ideas belong here,<br /> Sign in to be part of ISU.</h1>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Auth Card -->
+      <div class="auth-container">
+        <div class="auth-card" id="authCard">
+          <!-- Login Area -->
+          <div class="login__area grid">
+            <div class="login__data">
+              <h1 class="login__title">Welcome Back 👋</h1>
+              <p class="login__description">Please enter your details.</p>
+              <button class="login__button-border"><i class="ri-google-fill"></i> Sign in with Google</button>
+            </div>
+            <span class="login__line">or</span>
+            <form action="" class="login__form">
+              <div class="login__content grid">
+                <div class="login__box">
+                  <input type="email" name="email" placeholder="Email" class="login__input" />
+                  <i class="ri-mail-line"></i>
+                </div>
+                <div class="login__box">
+                  <input type="password" name="password" placeholder="Password" class="login__input" id="loginPass" />
+                  <i class="ri-eye-line login__eye" id="loginEye"></i>
+                </div>
+              </div>
+              <a href="#" class="login__forgot">Forgot Password?</a>
+              <button type="submit" class="login__button" id="loginSubmit">Log In</button>
+            </form>
+            <p class="login__switch">
+              Don’t have an account?
+              <a href="#" class="login__sign" id="showSignup">Sign Up</a>
+            </p>
+          </div>
+
+          <!-- Signup Area -->
+          <div class="signup__area grid">
+            <div class="signup__data">
+              <h1 class="signup__title">Join ISU 🚀</h1>
+              <p class="signup__description">Create your account and be part of the student community.</p>
+            </div>
+            <form action="" class="signup__form">
+              <div class="signup__content grid">
+                <div class="signup__box">
+                  <input type="text" name="name" placeholder="Full Name" class="signup__input" />
+                  <i class="ri-user-line"></i>
+                </div>
+                <div class="signup__box">
+                  <input type="email" name="email" placeholder="Email" class="signup__input" />
+                  <i class="ri-mail-line"></i>
+                </div>
+                <div class="signup__box">
+                  <input type="password" name="password" placeholder="Password" class="signup__input" />
+                  <i class="ri-lock-line"></i>
+                </div>
+              </div>
+              <button type="submit" class="signup__button" id="signupSubmit">Sign Up</button>
+            </form>
+            <p class="signup__switch">
+              Already have an account?
+              <a href="#" class="signup__sign" id="showLogin">Log In</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--=============== SWIPER JS ===============-->
+  <script src="assets/js/swiper-bundle.min.js"></script>
+
+  <!--=============== CUSTOM JS ===============-->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Flip card logic
+      const authCard = document.getElementById("authCard");
+      const showSignup = document.getElementById("showSignup");
+      const showLogin = document.getElementById("showLogin");
+
+      showSignup.addEventListener("click", function (e) {
+        e.preventDefault();
+        authCard.classList.add("flipped");
+      });
+
+      showLogin.addEventListener("click", function (e) {
+        e.preventDefault();
+        authCard.classList.remove("flipped");
+      });
+
+      // Swiper initialization
+      const swiper = new Swiper(".login__swiper", {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        effect: "slide", // can change to "fade", "cube", etc.
+        speed: 800,
+      });
+    });
+  </script>
+</body>
+</html>
